@@ -28,7 +28,14 @@ Body:
       "contentType": "reference"   // or "inlineReference"
     }
   ],
-  "enableWebSearchGrounding": true // default true, set false to disable per-turn
+  "contextualResources": {         // optional
+    "webContext": {
+      "isWebEnabled": false        // default true, set false to disable per-turn
+    },
+    "files": [                     // optional — OneDrive/SharePoint file URIs
+      { "uri": "https://contoso.sharepoint.com/..." }
+    ]
+  }
 }
 Response: 200 OK → copilotConversationResponse
 ```

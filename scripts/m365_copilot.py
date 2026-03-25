@@ -180,9 +180,9 @@ def send_message(token, conv_id, message, web_search=True, context=None, timezon
         "locationHint": {"timeZone": tz},
     }
     if not web_search:
-        body.setdefault("contextualResources", {})["isWebSearchEnabled"] = False
+        body["contextualResources"] = {"webContext": {"isWebEnabled": False}}
     if context:
-        body["additionalContext"] = [{"content": context, "contentType": "reference"}]
+        body["additionalContext"] = [{"description": "Additional context", "text": context}]
 
     r = requests.post(
         f"{GRAPH_BASE}/copilot/conversations/{conv_id}/chat",
